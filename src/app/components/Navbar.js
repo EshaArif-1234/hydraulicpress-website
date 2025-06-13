@@ -51,7 +51,7 @@ export default function Navbar() {
           >
             <Link href="/" className="flex items-center">
               <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                HydroPress
+                UH Hydraulics
               </span>
             </Link>
           </motion.div>
