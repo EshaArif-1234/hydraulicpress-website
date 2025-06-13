@@ -6,12 +6,12 @@ import { FaBars, FaTimes, FaIndustry, FaTools, FaInfoCircle, FaEnvelope } from '
 import { BsSunFill, BsMoonFill } from 'react-icons/bs';
 import { useTheme } from './ThemeProvider';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useActiveSection } from '../hooks/useActiveSection';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const activeSection = useActiveSection();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,9 +27,9 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Home', href: '/', icon: null },
-    { name: 'Products', href: '/#products', icon: FaIndustry },
-    { name: 'Services', href: '/#services', icon: FaTools },
-    { name: 'About', href: '/#about', icon: FaInfoCircle },
+    { name: 'Products', href: '/products', icon: FaIndustry },
+    { name: 'Services', href: '/services', icon: FaTools },
+    { name: 'About', href: '/about', icon: FaInfoCircle },
     { name: 'Contact', href: '/contact', icon: FaEnvelope },
   ];
 
@@ -79,16 +79,16 @@ export default function Navbar() {
                 >
                   <span className={`
                     flex items-center gap-2 text-sm font-medium transition-colors duration-300
-                    ${activeSection === link.href.replace('#', '') 
+                    ${(pathname === link.href || (pathname === '/' && link.href === '/')) 
                       ? 'text-blue-600 dark:text-blue-400 font-bold'
                       : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'}
                   `}>
-                    {link.icon && <link.icon className={`w-4 h-4 ${activeSection === link.href.replace('#', '') ? 'text-blue-600 dark:text-blue-400' : ''}`} />}
+                    {link.icon && <link.icon className={`w-4 h-4 ${(pathname === link.href || (pathname === '/' && link.href === '/')) ? 'text-blue-600 dark:text-blue-400' : ''}`} />}
                     {link.name}
                   </span>
                   <span className={`
                     absolute -bottom-1 left-0 h-0.5 bg-blue-600 transition-all duration-300
-                    ${activeSection === link.href.replace('#', '') ? 'w-full' : 'w-0 group-hover:w-full'}
+                    ${(pathname === link.href || (pathname === '/' && link.href === '/')) ? 'w-full' : 'w-0 group-hover:w-full'}
                   `} />
                 </Link>
               ))}
@@ -141,7 +141,7 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className={`
                     flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium transition-all duration-300
-                    ${activeSection === link.href.replace('#', '') 
+                    ${(pathname === link.href || (pathname === '/' && link.href === '/')) 
                       ? 'text-blue-600 dark:text-blue-400 bg-gray-50 dark:bg-gray-800 font-bold'
                       : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800'}
                   `}
