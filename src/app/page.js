@@ -194,6 +194,35 @@ export default function Home() {
         </div>
       </section> */}
 
+      {/* Quality Banner Section */}
+      <section className="relative py-24 sm:py-32 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/machine-7.jpg"
+            alt="Hydraulic Press Manufacturing"
+            fill
+            className="object-cover opacity-20 dark:opacity-10"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/90 to-purple-600/90 dark:from-blue-900/90 dark:to-purple-900/90" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-8">
+            Precision Engineering Meets Innovation
+          </h2>
+          <p className="text-xl sm:text-2xl text-blue-100 max-w-3xl mx-auto mb-12">
+            Our commitment to quality and innovation drives us to deliver exceptional hydraulic press solutions that exceed industry standards.
+          </p>
+          <div className="flex flex-wrap justify-center gap-6">
+            <button className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors shadow-lg hover:shadow-xl">
+              Download Brochure
+            </button>
+            <button className="bg-transparent text-white px-8 py-4 rounded-lg font-semibold border-2 border-white hover:bg-white/10 transition-colors shadow-lg hover:shadow-xl">
+              Schedule Demo
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials Section */}
       <section className="py-24 sm:py-32 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
