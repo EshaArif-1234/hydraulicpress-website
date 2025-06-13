@@ -39,7 +39,7 @@ export default function Footer() {
                 placeholder="Enter your email"
                 className="px-4 py-2 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white flex-grow text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 border border-gray-200 dark:border-gray-700"
               />
-              <button className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 transition-colors">
+              <button className="px-4 py-2 bg-gradient-to-r from-blue-600/90 to-purple-600/90 dark:from-blue-900/90 dark:to-purple-900/90 text-white rounded-lg text-sm hover:bg-blue-700 transition-colors">
                 Subscribe
               </button>
             </div>
