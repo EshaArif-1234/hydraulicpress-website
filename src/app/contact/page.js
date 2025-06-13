@@ -43,7 +43,7 @@ export default function Contact() {
     phone: '',
     company: '',
     message: '',
-    subject: '',
+    city: '',
     industry: '',
   });
 
@@ -53,11 +53,11 @@ export default function Contact() {
     // Format the message for WhatsApp
     const message = `*New Contact Form Submission*\n\n` +
       `*Name:* ${formData.name}\n` +
-      `*Email:* ${formData.email}\n` +
+      (formData.email ? `*Email:* ${formData.email}\n` : '') +
       `*Phone:* ${formData.phone}\n` +
       `*Company:* ${formData.company}\n` +
       `*Industry:* ${formData.industry}\n` +
-      `*Subject:* ${formData.subject}\n\n` +
+      `*City:* ${formData.city}\n\n` +
       `*Message:*\n${formData.message}`;
 
     // Create WhatsApp URL with the message
@@ -146,7 +146,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Email Address *
+                    Email Address
                   </label>
                   <input
                     type="email"
@@ -155,7 +155,6 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    required
                   />
                 </div>
                 <div>
@@ -185,14 +184,14 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Subject *
+                  <label htmlFor="city" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    City *
                   </label>
                   <input
                     type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
+                    id="city"
+                    name="city"
+                    value={formData.city}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     required
@@ -246,7 +245,7 @@ export default function Contact() {
       </section>
 
       {/* Map Section */}
-      <section className="py-24 bg-white dark:bg-gray-800">
+      <section className="pt-24 bg-white dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
           <div className="text-center">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
