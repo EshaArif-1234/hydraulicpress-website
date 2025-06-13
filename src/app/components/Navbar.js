@@ -27,10 +27,10 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Home', href: '/', icon: null },
-    { name: 'Products', href: '#products', icon: FaIndustry },
-    { name: 'Features', href: '#features', icon: FaTools },
-    { name: 'About', href: '#about', icon: FaInfoCircle },
-    { name: 'Contact', href: '#contact', icon: FaEnvelope },
+    { name: 'Products', href: '/#products', icon: FaIndustry },
+    { name: 'Services', href: '/#services', icon: FaTools },
+    { name: 'About', href: '/#about', icon: FaInfoCircle },
+    { name: 'Contact', href: '/contact', icon: FaEnvelope },
   ];
 
   return (

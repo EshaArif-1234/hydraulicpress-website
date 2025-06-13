@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { BeakerIcon, BoltIcon, CogIcon, ChartBarIcon, ClockIcon, UserGroupIcon, BuildingOfficeIcon, CubeIcon, WrenchScrewdriverIcon } from '@heroicons/react/24/outline';
 
 const features = [
@@ -268,9 +269,12 @@ export default function Home() {
             <p className="text-xl text-blue-100">
               Join hundreds of satisfied customers who have elevated their production capabilities.
             </p>
-            <button className="mt-4 bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors shadow-lg hover:shadow-xl">
+            <Link 
+              href="/contact" 
+              className="mt-4 inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors shadow-lg hover:shadow-xl"
+            >
               Contact Sales Team
-            </button>
+            </Link>
           </div>
         </div>
       </section>

@@ -26,7 +26,7 @@ export default function Footer() {
               <li>123 Industrial Ave</li>
               <li>Manufacturing District</li>
               <li>contact@hydraulicpress.com</li>
-              <li>+1 (555) 123-4567</li>
+              <li>03244002525</li>
             </ul>
           </div>
           
@@ -47,7 +47,7 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-gray-300 dark:border-gray-800 mt-12 pt-8 text-center text-sm text-gray-500 dark:text-gray-400">
-          <p>&copy; {new Date().getFullYear()} HydraulicPress. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} UH Hydraulics. All rights reserved.</p>
         </div>
       </div>
     </footer>
