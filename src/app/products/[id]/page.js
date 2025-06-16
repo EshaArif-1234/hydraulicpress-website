@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { FaArrowLeft, FaCheckCircle, FaCog, FaTag } from 'react-icons/fa';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import { use } from 'react';
 
 const products = [
   {
@@ -462,13 +463,15 @@ const products = [
 
 export default function ProductDetail({ params }) {
   const [product, setProduct] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { id } = use(params); // ✅ unwrap the params Promise
 
   useEffect(() => {
-    if (params.id) {
-      const foundProduct = products.find(p => p.id.toString() === params.id);
+    if (id) {
+      const foundProduct = products.find(p => p.id.toString() === id);
       setProduct(foundProduct);
     }
-  }, [params.id]);
+  }, [id]);
 
   if (!product) {
     return (
@@ -481,7 +484,7 @@ export default function ProductDetail({ params }) {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Navbar />
-
+  
       <main className="pt-32 pb-16 sm:pt-40 sm:pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
@@ -490,11 +493,14 @@ export default function ProductDetail({ params }) {
               Back to Products
             </Link>
           </div>
-
+  
           <div className="lg:grid lg:grid-cols-2 lg:gap-x-8">
             {/* Product Image */}
             <div className="mb-8 lg:mb-0">
-              <div className="relative w-full h-96 rounded-lg overflow-hidden shadow-lg">
+              <div
+                className="relative w-full h-96 rounded-lg overflow-hidden shadow-lg cursor-pointer"
+                onClick={() => setIsModalOpen(true)}
+              >
                 <Image
                   src={product.image}
                   alt={product.name}
@@ -503,7 +509,7 @@ export default function ProductDetail({ params }) {
                 />
               </div>
             </div>
-
+  
             {/* Product Info */}
             <div>
               <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">{product.name}</h1>
@@ -518,7 +524,7 @@ export default function ProductDetail({ params }) {
                 </span>
               </div>
               <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">{product.description}</p>
-
+  
               <div className="mb-6">
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Key Features</h2>
                 <ul className="space-y-2">
@@ -530,7 +536,7 @@ export default function ProductDetail({ params }) {
                   ))}
                 </ul>
               </div>
-
+  
               <div>
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Applications</h2>
                 <div className="flex flex-wrap gap-2">
@@ -545,8 +551,29 @@ export default function ProductDetail({ params }) {
           </div>
         </div>
       </main>
-
+  
       <Footer />
+  
+      {/* ✅ Modal goes here inside the return */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
+          <div className="relative w-full max-w-4xl h-[80vh]">
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-2 right-2 text-white text-2xl z-10"
+            >
+              &times;
+            </button>
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              className="object-contain rounded-lg"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
-}
+}  
+
