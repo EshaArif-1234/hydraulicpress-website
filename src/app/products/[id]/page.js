@@ -70,18 +70,393 @@ const products = [
   },
   {
     id: 5,
-    name: 'Compact Hydraulic Power Unit',
+    name: 'Hydraulic Machine 1',
+    category: 'Industrial',
+    capacity: '50-100 Tons',
+    description: 'High-performance hydraulic machine model 1, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image1.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 6,
+    name: 'Hydraulic Machine 2',
     category: 'Workshop',
-    capacity: '10-20 HP',
-    description: 'A compact and efficient hydraulic power unit, perfect for a variety of workshop applications.',
-    features: [
-      'High-efficiency pump',
-      'Integrated cooling system',
-      'Pressure relief valve',
-      'Compact tank design'
-    ],
-    image: '/power-unit.jpg', // Replace with your image path in /public
-    applications: ['Machine tools', 'Small presses', 'Automation']
+    capacity: '100-200 Tons',
+    description: 'High-performance hydraulic machine model 2, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image2.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 7,
+    name: 'Hydraulic Machine 3',
+    category: 'Laboratory',
+    capacity: '200-500 Tons',
+    description: 'High-performance hydraulic machine model 3, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image3.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 8,
+    name: 'Hydraulic Machine 4',
+    category: 'Industrial',
+    capacity: '500-1000 Tons',
+    description: 'High-performance hydraulic machine model 4, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image4.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 9,
+    name: 'Hydraulic Machine 5',
+    category: 'Workshop',
+    capacity: '10-50 Tons',
+    description: 'High-performance hydraulic machine model 5, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image5.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 10,
+    name: 'Hydraulic Machine 6',
+    category: 'Laboratory',
+    capacity: '50-100 Tons',
+    description: 'High-performance hydraulic machine model 6, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image6.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 11,
+    name: 'Hydraulic Machine 7',
+    category: 'Industrial',
+    capacity: '100-200 Tons',
+    description: 'High-performance hydraulic machine model 7, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image7.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 12,
+    name: 'Hydraulic Machine 8',
+    category: 'Workshop',
+    capacity: '200-500 Tons',
+    description: 'High-performance hydraulic machine model 8, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image8.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 13,
+    name: 'Hydraulic Machine 9',
+    category: 'Laboratory',
+    capacity: '500-1000 Tons',
+    description: 'High-performance hydraulic machine model 9, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image9.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 14,
+    name: 'Hydraulic Machine 10',
+    category: 'Industrial',
+    capacity: '10-50 Tons',
+    description: 'High-performance hydraulic machine model 10, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image10.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 15,
+    name: 'Hydraulic Machine 11',
+    category: 'Workshop',
+    capacity: '50-100 Tons',
+    description: 'High-performance hydraulic machine model 11, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image11.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 16,
+    name: 'Hydraulic Machine 12',
+    category: 'Laboratory',
+    capacity: '100-200 Tons',
+    description: 'High-performance hydraulic machine model 12, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image12.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 17,
+    name: 'Hydraulic Machine 13',
+    category: 'Industrial',
+    capacity: '200-500 Tons',
+    description: 'High-performance hydraulic machine model 13, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image13.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 18,
+    name: 'Hydraulic Machine 14',
+    category: 'Workshop',
+    capacity: '500-1000 Tons',
+    description: 'High-performance hydraulic machine model 14, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image14.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 19,
+    name: 'Hydraulic Machine 15',
+    category: 'Laboratory',
+    capacity: '10-50 Tons',
+    description: 'High-performance hydraulic machine model 15, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image15.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 20,
+    name: 'Hydraulic Machine 16',
+    category: 'Industrial',
+    capacity: '50-100 Tons',
+    description: 'High-performance hydraulic machine model 16, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image16.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 21,
+    name: 'Hydraulic Machine 17',
+    category: 'Workshop',
+    capacity: '100-200 Tons',
+    description: 'High-performance hydraulic machine model 17, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image17.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 22,
+    name: 'Hydraulic Machine 18',
+    category: 'Laboratory',
+    capacity: '200-500 Tons',
+    description: 'High-performance hydraulic machine model 18, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image18.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 23,
+    name: 'Hydraulic Machine 19',
+    category: 'Industrial',
+    capacity: '500-1000 Tons',
+    description: 'High-performance hydraulic machine model 19, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image19.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 24,
+    name: 'Hydraulic Machine 20',
+    category: 'Workshop',
+    capacity: '10-50 Tons',
+    description: 'High-performance hydraulic machine model 20, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image20.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 25,
+    name: 'Hydraulic Machine 21',
+    category: 'Laboratory',
+    capacity: '50-100 Tons',
+    description: 'High-performance hydraulic machine model 21, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image21.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 26,
+    name: 'Hydraulic Machine 22',
+    category: 'Industrial',
+    capacity: '100-200 Tons',
+    description: 'High-performance hydraulic machine model 22, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image22.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 27,
+    name: 'Hydraulic Machine 23',
+    category: 'Workshop',
+    capacity: '200-500 Tons',
+    description: 'High-performance hydraulic machine model 23, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image23.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 28,
+    name: 'Hydraulic Machine 24',
+    category: 'Laboratory',
+    capacity: '500-1000 Tons',
+    description: 'High-performance hydraulic machine model 24, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image24.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 29,
+    name: 'Hydraulic Machine 25',
+    category: 'Industrial',
+    capacity: '10-50 Tons',
+    description: 'High-performance hydraulic machine model 25, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image25.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 30,
+    name: 'Hydraulic Machine 26',
+    category: 'Workshop',
+    capacity: '50-100 Tons',
+    description: 'High-performance hydraulic machine model 26, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image26.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 31,
+    name: 'Hydraulic Machine 27',
+    category: 'Laboratory',
+    capacity: '100-200 Tons',
+    description: 'High-performance hydraulic machine model 27, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image27.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 32,
+    name: 'Hydraulic Machine 28',
+    category: 'Industrial',
+    capacity: '200-500 Tons',
+    description: 'High-performance hydraulic machine model 28, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image28.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 33,
+    name: 'Hydraulic Machine 29',
+    category: 'Workshop',
+    capacity: '500-1000 Tons',
+    description: 'High-performance hydraulic machine model 29, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image29.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 34,
+    name: 'Hydraulic Machine 30',
+    category: 'Laboratory',
+    capacity: '10-50 Tons',
+    description: 'High-performance hydraulic machine model 30, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image30.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 35,
+    name: 'Hydraulic Machine 31',
+    category: 'Industrial',
+    capacity: '50-100 Tons',
+    description: 'High-performance hydraulic machine model 31, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image31.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 36,
+    name: 'Hydraulic Machine 32',
+    category: 'Workshop',
+    capacity: '100-200 Tons',
+    description: 'High-performance hydraulic machine model 32, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image32.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 37,
+    name: 'Hydraulic Machine 33',
+    category: 'Laboratory',
+    capacity: '200-500 Tons',
+    description: 'High-performance hydraulic machine model 33, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image33.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 38,
+    name: 'Hydraulic Machine 34',
+    category: 'Industrial',
+    capacity: '500-1000 Tons',
+    description: 'High-performance hydraulic machine model 34, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image34.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 39,
+    name: 'Hydraulic Machine 35',
+    category: 'Workshop',
+    capacity: '10-50 Tons',
+    description: 'High-performance hydraulic machine model 35, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image35.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 40,
+    name: 'Hydraulic Machine 36',
+    category: 'Laboratory',
+    capacity: '50-100 Tons',
+    description: 'High-performance hydraulic machine model 36, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image36.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 41,
+    name: 'Hydraulic Machine 37',
+    category: 'Industrial',
+    capacity: '100-200 Tons',
+    description: 'High-performance hydraulic machine model 37, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image37.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 42,
+    name: 'Hydraulic Machine 38',
+    category: 'Workshop',
+    capacity: '200-500 Tons',
+    description: 'High-performance hydraulic machine model 38, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image38.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
+  },
+  {
+    id: 43,
+    name: 'Hydraulic Machine 39',
+    category: 'Laboratory',
+    capacity: '500-1000 Tons',
+    description: 'High-performance hydraulic machine model 39, designed for reliability and efficiency in various applications.',
+    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
+    image: '/image39.jpeg',
+    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
   }
 ];
 
