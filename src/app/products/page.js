@@ -67,6 +67,21 @@ const products = [
     ],
     image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
     applications: ['Material testing', 'Sample preparation', 'Research']
+  },
+  {
+    id: 5,
+    name: 'Compact Hydraulic Power Unit',
+    category: 'Workshop',
+    capacity: '10-20 HP',
+    description: 'A compact and efficient hydraulic power unit, perfect for a variety of workshop applications.',
+    features: [
+      'High-efficiency pump',
+      'Integrated cooling system',
+      'Pressure relief valve',
+      'Compact tank design'
+    ],
+    image: '/power-unit.jpg', // Replace with your image path in /public
+    applications: ['Machine tools', 'Small presses', 'Automation']
   }
 ];
 
@@ -153,9 +168,9 @@ export default function Products() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {currentProducts.map((product) => (
+              <Link href={`/products/${product.id}`} key={product.id}>
               <div
-                key={product.id}
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden"
+                className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden h-full"
               >
                 <div className="relative h-40">
                   <Image
@@ -213,6 +228,7 @@ export default function Products() {
                   </div>
                 </div>
               </div>
+            </Link>
             ))}
           </div>
           {/* Pagination */}
