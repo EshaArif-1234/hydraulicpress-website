@@ -23,10 +23,10 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Contact</h3>
             <ul className="space-y-2 text-sm text-gray-500 dark:text-gray-400">
-              <li>123 Industrial Ave</li>
-              <li>Manufacturing District</li>
-              <li>contact@hydraulicpress.com</li>
-              <li>03244002525</li>
+              <li>Jack market Habib Ganj</li>
+              <li>Misri Shah LHR</li>
+              <li>uhydraulics@gmail.com</li>
+              <li>+92 324 4696549</li>
             </ul>
           </div>
           
