@@ -1,13 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaSearch, FaArrowRight, FaEdit, FaTrash } from 'react-icons/fa';
+import { FaSearch, FaArrowRight } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-const categories = ['All', 'Industrial', 'Workshop', 'Laboratory'];
+
 
 const getImageUrl = (url) => {
   if (url && (url.startsWith('http') || url.startsWith('/'))) {
@@ -23,29 +24,41 @@ export default function Products() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [dbCategories, setDbCategories] = useState([]);
+  const { data: session } = useSession();
   const productsPerPage = 10;
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await fetch('/api/products');
-        if (!res.ok) {
-          throw new Error('Failed to fetch products');
-        }
-        const result = await res.json();
-        if (result.success) {
-          setProducts(result.data);
+        const [productsRes, categoriesRes] = await Promise.all([
+          fetch('/api/products'),
+          fetch('/api/categories'),
+        ]);
+
+        if (!productsRes.ok) throw new Error('Failed to fetch products');
+        if (!categoriesRes.ok) throw new Error('Failed to fetch categories');
+
+        const productsResult = await productsRes.json();
+        const categoriesResult = await categoriesRes.json();
+
+        if (productsResult.success) setProducts(productsResult.data);
+        else setError(productsResult.error || 'An unknown error occurred');
+
+        if (categoriesResult.success) {
+          setDbCategories([{ _id: 'all', name: 'All' }, ...categoriesResult.data]);
         } else {
-          setError(result.error || 'An unknown error occurred');
+          console.error('Failed to load categories.');
         }
+
       } catch (err) {
         setError(err.message);
       }
       setLoading(false);
     };
 
-    fetchProducts();
+    fetchData();
   }, []);
 
   const filteredProducts = products.filter(product => {
@@ -71,25 +84,7 @@ export default function Products() {
     }
   };
 
-  const handleDelete = async (productId) => {
-    if (window.confirm('Are you sure you want to delete this product?')) {
-      try {
-        const res = await fetch(`/api/products/${productId}`, {
-          method: 'DELETE',
-        });
-
-        const result = await res.json();
-
-        if (res.ok && result.success) {
-          setProducts(products.filter((p) => p._id !== productId));
-        } else {
-          setError(result.error || 'Failed to delete product.');
-        }
-      } catch (err) {
-        setError(err.message);
-      }
-    }
-  };
+  
 
   useEffect(() => {
     setCurrentPage(1); // Reset to first page when filters change
@@ -141,17 +136,17 @@ export default function Products() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             {/* Category Filter */}
             <div className="flex flex-wrap gap-4">
-              {categories.map((category) => (
+              {dbCategories.map((category) => (
                 <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category.toLowerCase())}
+                  key={category._id}
+                  onClick={() => setSelectedCategory(category.name.toLowerCase())}
                   className={`px-6 py-2 rounded-full text-sm font-semibold transition-colors
-                    ${selectedCategory === category.toLowerCase()
+                    ${selectedCategory === category.name.toLowerCase()
                       ? 'bg-blue-600 text-white'
                       : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                     }`}
                 >
-                  {category}
+                  {category.name}
                 </button>
               ))}
             </div>
@@ -167,9 +162,11 @@ export default function Products() {
                 />
                 <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 </div>
-                <Link href="/products/new" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors whitespace-nowrap">
-                    Add Product
-                </Link>
+                {session && (
+                  <Link href="/admin/products/new" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors whitespace-nowrap">
+                      Add Product
+                  </Link>
+                )}
             </div>
           </div>
         </div>
@@ -181,12 +178,12 @@ export default function Products() {
           {currentProducts.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
               {currentProducts.map((product) => (
-                <div key={product._id} className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
+                <Link href={`/products/${product._id}`} key={product._id} className="group bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
                   <div className="relative w-full h-56">
                     <Image src={getImageUrl(product.imageUrl)} alt={product.name} layout="fill" objectFit="cover" />
                   </div>
                   <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{product.name}</h3>
+                    <h3 className="text-xl font-bolacccccd text-gray-900 dark:text-white mb-2">{product.name}</h3>
                     <div className="flex items-center mb-2">
                         <span className="inline-block px-3 py-1 text-sm font-semibold text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/50 rounded-full">
                           {product.category}
@@ -200,18 +197,14 @@ export default function Products() {
                     <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm line-clamp-3 flex-grow">
                       {product.description}
                     </p>
-                    <p className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-4">${product.price}</p>
-                    <div className="flex justify-between items-center mt-auto">
-                      <Link href={`/products/${product._id}`} className="text-blue-500 dark:text-blue-400 hover:underline flex items-center">
+                    <p className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-4">PKR {product.price.toLocaleString()}</p>
+                    <div className="mt-auto">
+                      <span className="text-blue-500 dark:text-blue-400 group-hover:underline flex items-center">
                         Learn More <FaArrowRight className="ml-2" />
-                      </Link>
-                      <div>
-                        <Link href={`/products/${product._id}/edit`} className="text-gray-500 hover:text-blue-500 dark:hover:text-blue-400 mr-4"><FaEdit /></Link>
-                        <button onClick={() => handleDelete(product._id)} className="text-gray-500 hover:text-red-500 dark:hover:text-red-400"><FaTrash /></button>
-                      </div>
+                      </span>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           ) : (

@@ -8,6 +8,13 @@ import { FaArrowLeft } from 'react-icons/fa';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
+const getImageUrl = (url) => {
+  if (url && (url.startsWith('http') || url.startsWith('/'))) {
+    return url;
+  }
+  return 'https://static.vecteezy.com/system/resources/thumbnails/008/695/917/small/no-image-available-icon-simple-two-colors-template-for-no-image-or-picture-coming-soon-and-placeholder-illustration-isolated-on-white-background-vector.jpg';
+};
+
 export default function ProductDetail() {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -90,7 +97,7 @@ export default function ProductDetail() {
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="relative h-96 md:h-auto">
                 <Image
-                  src={product.imageUrl}
+                  src={getImageUrl(product.imageUrl)}
                   alt={product.name}
                   layout="fill"
                   objectFit="cover"
@@ -109,7 +116,7 @@ export default function ProductDetail() {
                   )}
                 </div>
                 <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">{product.name}</h1>
-                <p className="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-6">${product.price}</p>
+                <p className="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-6">PKR {product.price.toLocaleString()}</p>
                 <p className="text-gray-600 dark:text-gray-300 text-lg mb-6">
                   {product.description}
                 </p>

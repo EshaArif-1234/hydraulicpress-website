@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FaBars, FaTimes, FaIndustry, FaTools, FaInfoCircle, FaEnvelope } from 'react-icons/fa';
+import { FaBars, FaTimes, FaIndustry, FaTools, FaInfoCircle, FaEnvelope, FaUserShield } from 'react-icons/fa';
 import { BsSunFill, BsMoonFill } from 'react-icons/bs';
 import { useTheme } from './ThemeProvider';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -31,6 +31,7 @@ export default function Navbar() {
     { name: 'Services', href: '/services', icon: FaTools },
     { name: 'About', href: '/about', icon: FaInfoCircle },
     { name: 'Contact', href: '/contact', icon: FaEnvelope },
+    { name: 'Admin', href: '/admin', icon: FaUserShield },
   ];
 
   return (
