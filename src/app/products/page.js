@@ -3,416 +3,59 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaSearch, FaIndustry, FaTools, FaArrowRight } from 'react-icons/fa';
+import { FaSearch, FaArrowRight, FaEdit, FaTrash } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-const products = [
- 
-  {
-    id: 5,
-    name: 'Hydraulic Machine 1',
-    category: 'Industrial',
-    capacity: '50-100 Tons',
-    description: 'High-performance hydraulic machine model 1, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image1.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 6,
-    name: 'Shredder machine',
-    category: 'Workshop',
-    capacity: '100-200 Tons',
-    description: 'High-performance hydraulic machine model 2, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image2.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 7,
-    name: 'Hydraulic Machine 3',
-    category: 'Laboratory',
-    capacity: '200-500 Tons',
-    description: 'High-performance hydraulic machine model 3, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image3.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 8,
-    name: 'Hydraulic Machine 4',
-    category: 'Industrial',
-    capacity: '500-1000 Tons',
-    description: 'High-performance hydraulic machine model 4, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image4.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 9,
-    name: 'Hydraulic Machine 5',
-    category: 'Workshop',
-    capacity: '10-50 Tons',
-    description: 'High-performance hydraulic machine model 5, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image5.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 10,
-    name: 'Hydraulic Machine 6',
-    category: 'Laboratory',
-    capacity: '50-100 Tons',
-    description: 'High-performance hydraulic machine model 6, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image6.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 11,
-    name: 'Hydraulic Machine 7',
-    category: 'Industrial',
-    capacity: '100-200 Tons',
-    description: 'High-performance hydraulic machine model 7, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image7.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 12,
-    name: 'Hydraulic pump',
-    category: 'Workshop',
-    capacity: '200-500 Tons',
-    description: 'High-performance hydraulic machine model 8, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image8.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 13,
-    name: 'Hydraulic Machine 9',
-    category: 'Laboratory',
-    capacity: '500-1000 Tons',
-    description: 'High-performance hydraulic machine model 9, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image9.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 14,
-    name: 'Hydraulic Machine 10',
-    category: 'Industrial',
-    capacity: '10-50 Tons',
-    description: 'High-performance hydraulic machine model 10, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image10.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 15,
-    name: 'Hydraulic Machine 11',
-    category: 'Workshop',
-    capacity: '50-100 Tons',
-    description: 'High-performance hydraulic machine model 11, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image11.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 16,
-    name: 'Hydraulic Machine 12',
-    category: 'Laboratory',
-    capacity: '100-200 Tons',
-    description: 'High-performance hydraulic machine model 12, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image12.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 17,
-    name: 'Hydraulic Machine 13',
-    category: 'Industrial',
-    capacity: '200-500 Tons',
-    description: 'High-performance hydraulic machine model 13, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image13.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 18,
-    name: 'Hydraulic Machine 14',
-    category: 'Workshop',
-    capacity: '500-1000 Tons',
-    description: 'High-performance hydraulic machine model 14, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image14.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 19,
-    name: 'Hydraulic Machine 15',
-    category: 'Laboratory',
-    capacity: '10-50 Tons',
-    description: 'High-performance hydraulic machine model 15, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image15.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 20,
-    name: 'Hydraulic Machine 16',
-    category: 'Industrial',
-    capacity: '50-100 Tons',
-    description: 'High-performance hydraulic machine model 16, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image16.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 21,
-    name: 'Hydraulic Machine 17',
-    category: 'Workshop',
-    capacity: '100-200 Tons',
-    description: 'High-performance hydraulic machine model 17, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image17.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 22,
-    name: 'Hydraulic Machine 18',
-    category: 'Laboratory',
-    capacity: '200-500 Tons',
-    description: 'High-performance hydraulic machine model 18, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image18.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 23,
-    name: 'Hydraulic Machine 19',
-    category: 'Industrial',
-    capacity: '500-1000 Tons',
-    description: 'High-performance hydraulic machine model 19, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image19.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 24,
-    name: 'Hydraulic Machine 20',
-    category: 'Workshop',
-    capacity: '10-50 Tons',
-    description: 'High-performance hydraulic machine model 20, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image20.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 25,
-    name: 'Hydraulic Machine 21',
-    category: 'Laboratory',
-    capacity: '50-100 Tons',
-    description: 'High-performance hydraulic machine model 21, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image21.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 26,
-    name: 'Hydraulic Machine 22',
-    category: 'Industrial',
-    capacity: '100-200 Tons',
-    description: 'High-performance hydraulic machine model 22, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image22.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 27,
-    name: 'Hydraulic Machine 23',
-    category: 'Workshop',
-    capacity: '200-500 Tons',
-    description: 'High-performance hydraulic machine model 23, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image23.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 28,
-    name: 'Hydraulic Machine 24',
-    category: 'Laboratory',
-    capacity: '500-1000 Tons',
-    description: 'High-performance hydraulic machine model 24, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image24.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 29,
-    name: 'Hydraulic Machine 25',
-    category: 'Industrial',
-    capacity: '10-50 Tons',
-    description: 'High-performance hydraulic machine model 25, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image25.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 30,
-    name: 'Hydraulic Machine 26',
-    category: 'Workshop',
-    capacity: '50-100 Tons',
-    description: 'High-performance hydraulic machine model 26, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image26.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 31,
-    name: 'Hydraulic Machine 27',
-    category: 'Laboratory',
-    capacity: '100-200 Tons',
-    description: 'High-performance hydraulic machine model 27, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image27.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 32,
-    name: 'Hydraulic Machine 28',
-    category: 'Industrial',
-    capacity: '200-500 Tons',
-    description: 'High-performance hydraulic machine model 28, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image28.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 33,
-    name: 'Hydraulic Machine 29',
-    category: 'Workshop',
-    capacity: '500-1000 Tons',
-    description: 'High-performance hydraulic machine model 29, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image29.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 34,
-    name: 'Hydraulic Machine 30',
-    category: 'Laboratory',
-    capacity: '10-50 Tons',
-    description: 'High-performance hydraulic machine model 30, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image30.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 35,
-    name: 'Hydraulic Machine 31',
-    category: 'Industrial',
-    capacity: '50-100 Tons',
-    description: 'High-performance hydraulic machine model 31, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image31.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 36,
-    name: 'Hydraulic Machine 32',
-    category: 'Workshop',
-    capacity: '100-200 Tons',
-    description: 'High-performance hydraulic machine model 32, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image32.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 37,
-    name: 'Hydraulic Machine 33',
-    category: 'Laboratory',
-    capacity: '200-500 Tons',
-    description: 'High-performance hydraulic machine model 33, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image33.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 38,
-    name: 'Hydraulic Machine 34',
-    category: 'Industrial',
-    capacity: '500-1000 Tons',
-    description: 'High-performance hydraulic machine model 34, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image34.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 39,
-    name: 'Hydraulic Machine 35',
-    category: 'Workshop',
-    capacity: '10-50 Tons',
-    description: 'High-performance hydraulic machine model 35, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image35.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 40,
-    name: 'Hydraulic Machine 36',
-    category: 'Laboratory',
-    capacity: '50-100 Tons',
-    description: 'High-performance hydraulic machine model 36, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image36.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 41,
-    name: 'Hydraulic Machine 37',
-    category: 'Industrial',
-    capacity: '100-200 Tons',
-    description: 'High-performance hydraulic machine model 37, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image37.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 42,
-    name: 'Hydraulic Machine 38',
-    category: 'Workshop',
-    capacity: '200-500 Tons',
-    description: 'High-performance hydraulic machine model 38, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image38.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  },
-  {
-    id: 43,
-    name: 'Hydraulic Machine 39',
-    category: 'Laboratory',
-    capacity: '500-1000 Tons',
-    description: 'High-performance hydraulic machine model 39, designed for reliability and efficiency in various applications.',
-    features: ['Advanced control system', 'Robust steel frame', 'Energy-efficient design', 'Safety features included'],
-    image: '/image39.jpeg',
-    applications: ['Stamping', 'Molding', 'Assembly', 'Forming']
-  }
-];
-
 const categories = ['All', 'Industrial', 'Workshop', 'Laboratory'];
 
+const getImageUrl = (url) => {
+  if (url && (url.startsWith('http') || url.startsWith('/'))) {
+    return url;
+  }
+  return 'https://static.vecteezy.com/system/resources/thumbnails/008/695/917/small/no-image-available-icon-simple-two-colors-template-for-no-image-or-picture-coming-soon-and-placeholder-illustration-isolated-on-white-background-vector.jpg';
+};
+
 export default function Products() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
 
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch('/api/products');
+        if (!res.ok) {
+          throw new Error('Failed to fetch products');
+        }
+        const result = await res.json();
+        if (result.success) {
+          setProducts(result.data);
+        } else {
+          setError(result.error || 'An unknown error occurred');
+        }
+      } catch (err) {
+        setError(err.message);
+      }
+      setLoading(false);
+    };
+
+    fetchProducts();
+  }, []);
+
   const filteredProducts = products.filter(product => {
-    const matchesCategory = selectedCategory === 'All' || product.category === selectedCategory;
-    const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         product.description.toLowerCase().includes(searchQuery.toLowerCase());
+    if (!product || !product.name || !product.description) {
+      console.error('Invalid product data found and filtered out:', product);
+      return false;
+    }
+    const matchesCategory = selectedCategory === 'all' || (product.category && product.category.toLowerCase() === selectedCategory.toLowerCase());
+    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         product.description.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
@@ -422,11 +65,59 @@ export default function Products() {
   const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => {
+    if (pageNumber > 0 && pageNumber <= totalPages) {
+      setCurrentPage(pageNumber);
+    }
+  };
+
+  const handleDelete = async (productId) => {
+    if (window.confirm('Are you sure you want to delete this product?')) {
+      try {
+        const res = await fetch(`/api/products/${productId}`, {
+          method: 'DELETE',
+        });
+
+        const result = await res.json();
+
+        if (res.ok && result.success) {
+          setProducts(products.filter((p) => p._id !== productId));
+        } else {
+          setError(result.error || 'Failed to delete product.');
+        }
+      } catch (err) {
+        setError(err.message);
+      }
+    }
+  };
 
   useEffect(() => {
     setCurrentPage(1); // Reset to first page when filters change
-  }, [selectedCategory, searchQuery]);
+  }, [selectedCategory, searchTerm]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+        <Navbar />
+        <div className="flex justify-center items-center h-screen">
+            <div className="text-xl text-gray-800 dark:text-gray-200">Loading products...</div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+        <Navbar />
+        <div className="flex justify-center items-center h-screen">
+            <div className="text-xl text-red-500">Error: {error}</div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -439,7 +130,7 @@ export default function Products() {
             Our Products
           </h1>
           <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-            Discover our range of high-quality hydraulic presses designed for various industrial applications
+            Discover our range of high-quality hydraulic presses designed for various industrial applications.
           </p>
         </div>
       </section>
@@ -453,9 +144,9 @@ export default function Products() {
               {categories.map((category) => (
                 <button
                   key={category}
-                  onClick={() => setSelectedCategory(category)}
+                  onClick={() => setSelectedCategory(category.toLowerCase())}
                   className={`px-6 py-2 rounded-full text-sm font-semibold transition-colors
-                    ${selectedCategory === category
+                    ${selectedCategory === category.toLowerCase()
                       ? 'bg-blue-600 text-white'
                       : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                     }`}
@@ -464,16 +155,21 @@ export default function Products() {
                 </button>
               ))}
             </div>
-            {/* Search Bar */}
-            <div className="relative w-full md:w-auto">
-              <input
-                type="text"
-                placeholder="Search products..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full md:w-64 pl-10 pr-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-              <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            {/* Search Bar and Add Product Button */}
+            <div className="flex items-center gap-4">
+                <div className="relative w-full md:w-auto">
+                <input
+                    type="text"
+                    placeholder="Search products..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full md:w-64 pl-10 pr-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+                <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                </div>
+                <Link href="/products/new" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors whitespace-nowrap">
+                    Add Product
+                </Link>
             </div>
           </div>
         </div>
@@ -482,78 +178,81 @@ export default function Products() {
       {/* Products Grid */}
       <section className="py-12 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {currentProducts.map((product) => (
-              <Link href={`/products/${product.id}`} key={product.id}>
-                <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden h-full">
-                  <div className="relative h-56">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      className="object-cover"
-                    />
+          {currentProducts.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+              {currentProducts.map((product) => (
+                <div key={product._id} className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col">
+                  <div className="relative w-full h-56">
+                    <Image src={getImageUrl(product.imageUrl)} alt={product.name} layout="fill" objectFit="cover" />
                   </div>
-                  <div className="p-4">
-                    <div className="flex justify-between items-start mb-3">
-                      <div>
-                        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
-                          {product.name}
-                        </h3>
-                        <span className="inline-block px-3 py-1 text-sm font-semibold text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                  <div className="p-6 flex flex-col flex-grow">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{product.name}</h3>
+                    <div className="flex items-center mb-2">
+                        <span className="inline-block px-3 py-1 text-sm font-semibold text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/50 rounded-full">
                           {product.category}
                         </span>
-                        <span className="inline-block ml-2 px-3 py-1 text-sm font-semibold text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 rounded-full">
-                          {product.capacity}
-                        </span>
-                      </div>
+                        {product.capacity && (
+                            <span className="inline-block ml-2 px-3 py-1 text-sm font-semibold text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 rounded-full">
+                                {product.capacity}
+                            </span>
+                        )}
                     </div>
-                    <p className="text-gray-600 dark:text-gray-300 mb-3 text-sm line-clamp-2">
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm line-clamp-3 flex-grow">
                       {product.description}
                     </p>
+                    <p className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-4">${product.price}</p>
+                    <div className="flex justify-between items-center mt-auto">
+                      <Link href={`/products/${product._id}`} className="text-blue-500 dark:text-blue-400 hover:underline flex items-center">
+                        Learn More <FaArrowRight className="ml-2" />
+                      </Link>
+                      <div>
+                        <Link href={`/products/${product._id}/edit`} className="text-gray-500 hover:text-blue-500 dark:hover:text-blue-400 mr-4"><FaEdit /></Link>
+                        <button onClick={() => handleDelete(product._id)} className="text-gray-500 hover:text-red-500 dark:hover:text-red-400"><FaTrash /></button>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </Link>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <h2 className="text-2xl font-semibold text-gray-700 dark:text-gray-300">No products match your criteria</h2>
+              <p className="mt-2 text-gray-500 dark:text-gray-400">Try adjusting your search or category filters.</p>
+            </div>
+          )}
+
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="mt-8 flex justify-center gap-2">
-              <button
-                onClick={() => paginate(currentPage - 1)}
-                disabled={currentPage === 1}
-                className={`px-4 py-2 rounded-lg text-sm font-semibold ${
-                  currentPage === 1
-                    ? 'bg-gray-200 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed'
-                    : 'bg-blue-600 text-white hover:bg-blue-700'
-                }`}
-              >
-                Previous
-              </button>
-              {[...Array(totalPages)].map((_, index) => (
+            <div className="flex justify-center mt-12">
+              <nav className="flex rounded-md shadow">
                 <button
-                  key={index}
-                  onClick={() => paginate(index + 1)}
-                  className={`px-4 py-2 rounded-lg text-sm font-semibold ${
-                    currentPage === index + 1
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
-                  }`}
+                  onClick={() => paginate(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50"
                 >
-                  {index + 1}
+                  Previous
                 </button>
-              ))}
-              <button
-                onClick={() => paginate(currentPage + 1)}
-                disabled={currentPage === totalPages}
-                className={`px-4 py-2 rounded-lg text-sm font-semibold ${
-                  currentPage === totalPages
-                    ? 'bg-gray-200 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed'
-                    : 'bg-blue-600 text-white hover:bg-blue-700'
-                }`}
-              >
-                Next
-              </button>
+                {Array.from({ length: totalPages }, (_, i) => (
+                  <button
+                    key={i + 1}
+                    onClick={() => paginate(i + 1)}
+                    className={`-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium
+                      ${currentPage === i + 1
+                        ? 'bg-blue-50 border-blue-500 text-blue-600 z-10'
+                        : 'bg-white text-gray-700 hover:bg-gray-50'
+                      }`}
+                  >
+                    {i + 1}
+                  </button>
+                ))}
+                <button
+                  onClick={() => paginate(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  className="-ml-px relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50"
+                >
+                  Next
+                </button>
+              </nav>
             </div>
           )}
         </div>
