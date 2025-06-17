@@ -23,7 +23,7 @@ const contactInfo = [
   {
     icon: EnvelopeIcon,
     title: 'Email Us',
-    content: 'info@uhhydraulics.com',
+    content: 'uhhydraulics@gmail.com',
     link: 'mailto:uhhydraulics@gmail.com',
     linkText: 'Send Email',
   },

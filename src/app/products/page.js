@@ -162,11 +162,6 @@ export default function Products() {
                 />
                 <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               </div>
-              {session && (
-                <Link href="/admin/products/new" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors whitespace-nowrap">
-                  Add Product
-                </Link>
-              )}
             </div>
           </div>
         </div>
