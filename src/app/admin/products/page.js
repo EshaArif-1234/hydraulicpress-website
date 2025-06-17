@@ -85,7 +85,24 @@ export default function AdminProductsPage() {
             {products.map((product) => (
               <tr key={product._id} className="hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td className="py-4 px-6">
-                  <Image src={getImageUrl(product.imageUrl)} alt={product.name} width={64} height={64} className="rounded-md object-cover" />
+                  {product.imageUrl?.startsWith('data:image') ? (
+                    <img
+                      src={product.imageUrl}
+                      alt={product.name}
+                      width={64}
+                      height={64}
+                      className="rounded-md object-cover"
+                      style={{ objectFit: 'cover', width: 64, height: 64 }}
+                    />
+                  ) : (
+                    <Image
+                      src={getImageUrl(product.imageUrl)}
+                      alt={product.name}
+                      width={64}
+                      height={64}
+                      className="rounded-md object-cover"
+                    />
+                  )}
                 </td>
                 <td className="py-4 px-6 text-sm font-medium text-gray-900 dark:text-white">{product.name}</td>
                 <td className="py-4 px-6 text-sm text-gray-500 dark:text-gray-300">{product.category}</td>

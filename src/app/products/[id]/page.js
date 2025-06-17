@@ -16,6 +16,7 @@ const getImageUrl = (url) => {
 };
 
 export default function ProductDetail() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -95,15 +96,59 @@ export default function ProductDetail() {
           </div>
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="relative h-96 md:h-auto">
-                <Image
-                  src={getImageUrl(product.imageUrl)}
-                  alt={product.name}
-                  layout="fill"
-                  objectFit="cover"
-                  className="transition-transform duration-500 hover:scale-105"
-                />
-              </div>
+              <div className="relative h-96 md:h-auto cursor-pointer" onClick={() => setIsModalOpen(true)}>
+  {product.imageUrl?.startsWith('data:image') ? (
+    <img
+      src={product.imageUrl}
+      alt={product.name}
+      style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+      className="absolute inset-0 w-full h-full transition-transform duration-500 hover:scale-105"
+    />
+  ) : (
+    <Image
+      src={getImageUrl(product.imageUrl)}
+      alt={product.name}
+      layout="fill"
+      objectFit="cover"
+      className="transition-transform duration-500 hover:scale-105"
+    />
+  )}
+</div>
+
+{/* Modal for image preview */}
+{isModalOpen && (
+  <div
+    className="fixed inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center"
+    onClick={() => setIsModalOpen(false)}
+  >
+    <div className="relative max-w-3xl w-full flex justify-center items-center" onClick={e => e.stopPropagation()}>
+      <button
+        className="absolute top-2 right-2 text-white text-3xl font-bold z-10 hover:text-red-400"
+        onClick={() => setIsModalOpen(false)}
+        aria-label="Close"
+      >
+        &times;
+      </button>
+      {product.imageUrl?.startsWith('data:image') ? (
+        <img
+          src={product.imageUrl}
+          alt={product.name}
+          className="rounded-lg shadow-lg max-h-[80vh] max-w-full"
+          style={{ objectFit: 'contain' }}
+        />
+      ) : (
+        <Image
+          src={getImageUrl(product.imageUrl)}
+          alt={product.name}
+          width={800}
+          height={600}
+          className="rounded-lg shadow-lg max-h-[80vh] max-w-full"
+          style={{ objectFit: 'contain' }}
+        />
+      )}
+    </div>
+  </div>
+)}
               <div className="p-8 md:p-12">
                 <div className="flex items-center mb-4">
                   <span className="inline-block px-3 py-1 text-sm font-semibold text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/50 rounded-full">
