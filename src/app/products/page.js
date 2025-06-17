@@ -21,7 +21,7 @@ const products = [
   },
   {
     id: 6,
-    name: 'Hydraulic Machine 2',
+    name: 'Shredder machine',
     category: 'Workshop',
     capacity: '100-200 Tons',
     description: 'High-performance hydraulic machine model 2, designed for reliability and efficiency in various applications.',
@@ -81,7 +81,7 @@ const products = [
   },
   {
     id: 12,
-    name: 'Hydraulic Machine 8',
+    name: 'Hydraulic pump',
     category: 'Workshop',
     capacity: '200-500 Tons',
     description: 'High-performance hydraulic machine model 8, designed for reliability and efficiency in various applications.',
